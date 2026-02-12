@@ -10,7 +10,6 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: 'lts/*'
-      - run: npm install -g dxfl
       - run: npx --yes dxfl deploy signatures.gaite-lyrique.net public/ --yes
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.DEUXFLEURS_ACCESS_KEY }}
