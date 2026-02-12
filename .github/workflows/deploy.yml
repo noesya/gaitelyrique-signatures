@@ -1,0 +1,13 @@
+on:
+  push:
+    branch: main
+name: Deploy to Deuxfleurs
+jobs:
+  deploy:
+    runs-on: node:lts-alpine
+    steps:
+      - run: npm install -g dxfl
+      - run: npx --yes dxfl deploy signatures.gaite-lyrique.net public/ --yes
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.DEUXFLEURS_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.DEUXFLEURS_SECRET }}
